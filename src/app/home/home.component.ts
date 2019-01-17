@@ -35,12 +35,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.data.getAllFlights().subscribe(
-      data => 
-        this.flights$ = data
+      data => {
+        this.flights$ = data;
+        console.log(this.flights$); 
+      }
        // this.flights$.filter
       
       
-    );
+    )
        console.log(this.flights$); 
    // this.filteredFlights$ = this.flights$;
   }
