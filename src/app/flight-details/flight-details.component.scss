@@ -1,0 +1,23 @@
+a {
+    text-decoration: none;
+    border: 1px solid #0A4970;
+    border-radius: 4px;
+    background: #F1BDB7;
+    padding: 4px;
+    color: #0A4970;
+    margin-right: 30px;
+}
+a:hover {
+    background: rgb(247, 247, 188);
+    color: #4561F7;
+}
+ul {
+    list-style-type: none;
+}
+.book_button{
+    background: #36F135;
+}
+.book_button:hover{
+    background: honeydew;
+}
+
