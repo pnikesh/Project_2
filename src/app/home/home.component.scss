@@ -1,11 +1,12 @@
 .container {
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 15% auto;
    
 }
 .sidebar{
     background: #C3CFD7;
     border-right:2px solid #0A4970;
+    text-align: center;
 }
 input {
     margin-left: 10px;
@@ -49,4 +50,7 @@ th {
 button {
     margin-left: 31%;
     margin-top: 20px;
+}
+#unset{
+   color: red; 
 }

@@ -51,6 +51,10 @@ export class HomeComponent implements OnInit {
  //   return flights$.includes(departureCityField);
  // }
 
+ newInput(){
+   console.log(this.departureCityField)
+ }
+
  search = () => {}
 
   filteredFlights$ = () => {
