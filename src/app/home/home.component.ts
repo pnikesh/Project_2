@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   isDirect: boolean;
   priceField: number;
 
+
+
   //filteredFlights$: any;
   flights$: any;
 
@@ -38,21 +40,59 @@ export class HomeComponent implements OnInit {
       data => {
         this.flights$ = data;
         console.log(this.flights$); 
+        let vals = Object.entries(this.flights$);
+        console.log(this.departureCityField, vals)
+
+        
+        //console.log(vals.match('to'));
+        //let cities = Object.keys(vals)
+
+       
+          //if (vals[]).includes(element) {}
+          
+      
+        
+
       }
        // this.flights$.filter
       
       
     )
        console.log(this.flights$); 
+      
+
    // this.filteredFlights$ = this.flights$;
   }
 
- // filter = function(departureCityField, flights$){
- //   return flights$.includes(departureCityField);
- // }
+ /* filter = function(departureCityField, flights$){
+    let a = flights$.includes(departureCityField);
+    console.log(a);
+    return a;
+  }*/
 
- newInput(){
-   console.log(this.departureCityField)
+ newInput(obj, departureCityField){
+
+  
+  let vals = Object.entries(this.flights$);
+  console.log(this.departureCityField, vals)
+  let a = this.flights$.includes(departureCityField);
+
+  //console.log(a);
+  let i : number;     
+  for (i =0; i < vals.length; i++ ){
+    
+    let str = (vals[i][1].departureCity).toLowerCase();
+    console.log(str);
+   // str.toLowerCase().includes(departureCityField.toLowerCase())
+   //.toLowerCase();
+   var substr = this.departureCityField;
+   console.log(substr);
+    console.log(str.includes(substr));
+
+    
+  }
+
+
  }
 
  search = () => {}
