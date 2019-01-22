@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from "@angular/router";
 import { concat } from 'rxjs/internal/observable/concat';
+declare var $: any;
 
 @Component({
   selector: 'app-flight-details',
@@ -14,6 +15,7 @@ export class FlightDetailsComponent implements OnInit {
 flightId: number;
 flight$: object;
 
+
   constructor(private route: ActivatedRoute, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
    }
@@ -23,6 +25,15 @@ flight$: object;
       data => this.flight$ = data          
     );
     console.log(this.flight$)
+
+    $("button").click(function(){
+      var div = $("div");  
+      console.log('dddddddddd')
+      div.animate({left: '100px'}, "slow");
+      div.animate({fontSize: '5em'}, "slow");
+  });
   }
+
+ 
 
 }

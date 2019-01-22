@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
   }
   this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
  } 
+  
 }
 
 
