@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
+import { EnterPipe } from './enter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FlightDetailsComponent } from './flight-details/flight-details.componen
     HomeComponent,
     WelcomeComponent,
     SidebarComponent,
-    FlightDetailsComponent
+    FlightDetailsComponent,
+    EnterPipe
   ],
   imports: [
     BrowserModule,

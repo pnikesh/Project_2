@@ -7,6 +7,7 @@ import { isArray } from 'util';
 import { ArrayType, collectExternalReferences } from '@angular/compiler/src/output/output_ast';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -43,20 +44,8 @@ export class HomeComponent implements OnInit {
         let vals = Object.entries(this.flights$);
         console.log(this.departureCityField, vals)
 
-        
-        //console.log(vals.match('to'));
-        //let cities = Object.keys(vals)
-
-       
-          //if (vals[]).includes(element) {}
-          
-      
-        
-
       }
-       // this.flights$.filter
-      
-      
+  
     )
        console.log(this.flights$); 
       
