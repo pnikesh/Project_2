@@ -8,7 +8,7 @@
         <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="newInput($event)"/>
 
         <h5>Arrival City :</h5>
-        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"/>
+        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="newInput($event)"/>
 
         <h5>Departure Date :</h5>
         <input type="date" name="departureDate"  [(ngModel)]="departureDateField"/>
@@ -25,7 +25,9 @@
         <button class="btn btn-danger" type="submit" (click)="search()">Search</button>
     </div>
 
-    <div class="flights_content">
+   
+
+    <div class="flights_content" *ngIf="searchFieldsContainInfo">
             <div style="text-align: center">
             <h1 > Here is the list of all flights available </h1>   
         </div><br>

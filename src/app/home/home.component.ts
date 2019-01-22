@@ -7,8 +7,6 @@ import { isArray } from 'util';
 import { ArrayType, collectExternalReferences } from '@angular/compiler/src/output/output_ast';
 import { Flight } from '../flight';
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,20 +21,16 @@ export class HomeComponent implements OnInit {
   isDirect: boolean;
   priceField: number;
 
-
-////
   public filteredFlights: Flight[] = [];
   flights$: any;
 
-  temp: boolean= true;
+  searchFieldsContainInfo: boolean= false;
 
   flight: any;
 
-  //flight (departureCity, arrivalCity, departureTime, arrivalTime, direct, ticketPrice) => 
- // {departureCity, arrivalCity, departureTime, arrivalTime, direct, ticketPrice};
-
   constructor(private data: DataService ) { }
 
+  // Extracting list of flights when component loads
   ngOnInit() {
     this.data.getAllFlights().subscribe(
       data => {
@@ -44,64 +38,61 @@ export class HomeComponent implements OnInit {
         console.log(this.flights$); 
         let vals = Object.entries(this.flights$);
         console.log(this.departureCityField, vals)
+      })  
+  } 
+// Event handler of search fields updated
+ newInput(obj){
 
-      }
+   this.filteredFlights = []; 
+ 
+  let vals = this.flights$;
   
-    )
-       console.log(this.flights$); 
-      
-
-   // this.filteredFlights$ = this.flights$;
+  let i : number;     
+  for (i =0; i < vals.length; i++ ){    
+    if ((vals[i].departureCity).toLowerCase().includes(obj)) {
+      this.filteredFlights.push(vals[i]);
+    }  
   }
+  this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+ } 
+}
 
- /* filter = function(departureCityField, flights$){
+
+  //flight (departureCity, arrivalCity, departureTime, arrivalTime, direct, ticketPrice) => 
+ // {departureCity, arrivalCity, departureTime, arrivalTime, direct, ticketPrice};
+
+ //let str = (vals[i].departureCity).toLowerCase();   
+      //console.log(this.flights$); 
+   // this.filteredFlights$ = this.flights$;
+
+/* filter = function(departureCityField, flights$){
     let a = flights$.includes(departureCityField);
     console.log(a);
     return a;
   }*/
 
- newInput(obj){
-
-   this.filteredFlights = [];
-  
-  //let vals = Object.entries(this.flights$);
-  let vals = this.flights$;
-  //console.log(this.departureCityField, vals)
+ //let vals = Object.entries(this.flights$);
+//console.log(this.departureCityField, vals)
   //let a = this.flights$.includes(obj);
 
+  //console.log(str);
+
+    //console.log(typeof this.filteredFlights);
+    //console.log(typeof this.flights$);
   //console.log(a);
-  let i : number;     
-  for (i =0; i < vals.length; i++ ){
-    
-    let str = (vals[i].departureCity).toLowerCase();
-    //console.log(str);
-
-    console.log(typeof this.filteredFlights);
-    console.log(typeof this.flights$);
-
-    if ((vals[i].departureCity).toLowerCase().includes(obj)) {
-      this.filteredFlights.push(vals[i]);
-    }
-    
 
     //this.filteredFlights$ = vals[i] //.filter(value => {
       //let x = (value[i][1].departureCity).indexOf(obj) > -1;
       //  return x;
      // })
 
-
    // str.toLowerCase().includes(departureCityField.toLowerCase())
    //.toLowerCase();
-   var substr = this.departureCityField;
-   console.log(substr);
-    console.log(str.includes(substr));
+   //var substr = this.departureCityField;
+   //console.log(substr);
+   // console.log(str.includes(substr));
 
-    
-  }
-
-
- }
-
+/*
  search = () => {}
 
   filteredFlights$ = () => {
@@ -112,5 +103,4 @@ export class HomeComponent implements OnInit {
     })
     
   }  
-
-}
+*/

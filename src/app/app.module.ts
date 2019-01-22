@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { FormsModule }   from '@angular/forms';
+import * as $ from 'jquery';
 
 
 import { AppRoutingModule } from './app-routing.module';
