@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   priceField: number;
 
   public filteredFlights: Flight[] = [];
+  private tempFlights: Flight[] = [];
   flights$: any;
 
   searchFieldsContainInfo: boolean= false;
@@ -40,22 +41,55 @@ export class HomeComponent implements OnInit {
         console.log(this.departureCityField, vals)
       })  
   } 
-// Event handler of search fields updated
- newInput(obj){
+// Event handlers of search fields updated
 
-   this.filteredFlights = []; 
+changed(obj) {
+
+  console.log(obj)
+/*
+  this.filteredFlights = []; 
+
+  if ( (this.departureCityField == "" || this.departureCityField == "undefined") && 
+      (this.arrivalCityField == "" || this.arrivalCityField == "undefined")) {
+    this.searchFieldsContainInfo = false;
+  }*/
+}
+// Destination City field
+destCityInput(obj){
+
+   this.tempFlights = this.filteredFlights; 
  
   let vals = this.flights$;
   
   let i : number;     
   for (i =0; i < vals.length; i++ ){    
     if ((vals[i].departureCity).toLowerCase().includes(obj)) {
-      this.filteredFlights.push(vals[i]);
+      this.tempFlights.push(vals[i]);
     }  
   }
+  if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
   this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
  } 
-  
+ 
+ // Destination City field
+arrCityInput(obj){
+
+ // this.filteredFlights = []; 
+
+ let vals = this.flights$;
+ 
+ let i : number;     
+ for (i =0; i < vals.length; i++ ){    
+   if ((vals[i].arrivalCity).toLowerCase().includes(obj)) {
+     this.filteredFlights.push(vals[i]);
+   }  
+ }
+ this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+} 
+
+ 
+
+
 }
 
 

@@ -5,21 +5,21 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EnterPipe implements PipeTransform {
 
-  transform(value: any[], departureCityField: string, i:number): any[] {
+  transform(flights: any[], departureCityField: string, i:number): any {
 
     //filteredFlights: [];
     //let val = (value.departureCity).indexOf(departureCityField);
-    //var filteredFlights = value[0].filter(value => {
-    //  return (value[i].departureCity).indexOf(departureCityField) > -1;
-    //})
+    var filteredFlights = flights.filter(flight => {
+      return (flight.departureCity.toLocaleLowerCase()).startsWith(departureCityField.toLocaleLowerCase());
+    })
    // debugger;
-    console.log(value);
+    console.log(filteredFlights);
     //console.log(i);
     //if (value.includes(departureCityField))
 
 
 
-    return value;
+    return filteredFlights;
   }
 
 }
