@@ -8,7 +8,7 @@ export class EnterPipe implements PipeTransform {
   transform(flights: any[], departureCityField: string, i:number): any {
 
     //filteredFlights: [];
-    //let val = (value.departureCity).indexOf(departureCityField);
+    //let val = (value.departureCity).indexOf(departureCityField); //
     var filteredFlights = flights.filter(flight => {
       return (flight.departureCity.toLocaleLowerCase()).startsWith(departureCityField.toLocaleLowerCase());
     })
