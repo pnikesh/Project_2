@@ -31,61 +31,61 @@ export class HomeComponent implements OnInit {
 
   constructor(private data: DataService ) { }
 
-  // Extracting list of flights when component loads
-  ngOnInit() {
-    this.data.getAllFlights().subscribe(
-      data => {
-        this.flights$ = data;
-        console.log(this.flights$); 
-        let vals = Object.entries(this.flights$);
-        console.log(this.departureCityField, vals)
-      })  
-  } 
-// Event handlers of search fields updated
+      // Extracting list of flights when component loads
+      ngOnInit() {
+        this.data.getAllFlights().subscribe(
+          data => {
+            this.flights$ = data;
+            console.log(this.flights$); 
+            let vals = Object.entries(this.flights$);
+            console.log(this.departureCityField, vals)
+          })  
+      } 
+    // Event handlers of search fields updated
 
-changed(obj) {
+    changed(obj) {
 
-  console.log(obj)
-/*
-  this.filteredFlights = []; 
+      console.log(obj)
+    /*
+      this.filteredFlights = []; 
 
-  if ( (this.departureCityField == "" || this.departureCityField == "undefined") && 
-      (this.arrivalCityField == "" || this.arrivalCityField == "undefined")) {
-    this.searchFieldsContainInfo = false;
-  }*/
-}
-// Destination City field
-destCityInput(obj){
+      if ( (this.departureCityField == "" || this.departureCityField == "undefined") && 
+          (this.arrivalCityField == "" || this.arrivalCityField == "undefined")) {
+        this.searchFieldsContainInfo = false;
+      }*/
+    }
+    // Destination City field
+    destCityInput(obj){
 
-   this.tempFlights = this.filteredFlights; 
- 
-  let vals = this.flights$;
-  
-  let i : number;     
-  for (i =0; i < vals.length; i++ ){    
-    if ((vals[i].departureCity).toLowerCase().includes(obj)) {
-      this.tempFlights.push(vals[i]);
-    }  
-  }
-  if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
-  this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
- } 
- 
- // Destination City field
-arrCityInput(obj){
+      //this.tempFlights = this.filteredFlights; 
+    
+      let vals = this.flights$;
+      
+      let i : number;     
+      for (i =0; i < vals.length; i++ ){    
+        if ((vals[i].departureCity).toLowerCase().includes(obj)) {
+          this.filteredFlights.push(vals[i]);
+        }  
+      }
+      //if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
+      this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+    } 
+    
+    // Destination City field
+    arrCityInput(obj){
 
- // this.filteredFlights = []; 
+    // this.filteredFlights = []; 
 
- let vals = this.flights$;
- 
- let i : number;     
- for (i =0; i < vals.length; i++ ){    
-   if ((vals[i].arrivalCity).toLowerCase().includes(obj)) {
-     this.filteredFlights.push(vals[i]);
-   }  
- }
- this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
-} 
+    let vals = this.flights$;
+    
+    let i : number;     
+    for (i =0; i < vals.length; i++ ){    
+      if ((vals[i].arrivalCity).toLowerCase().includes(obj)) {
+        this.filteredFlights.push(vals[i]);
+      }  
+    }
+    this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+    } 
 
  
 

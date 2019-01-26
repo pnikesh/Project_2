@@ -8,7 +8,7 @@
         <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />
 
         <h5>Arrival City :</h5>
-        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()"/>
+        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed($event)"/>
 
         <h5>Departure Date :</h5>
         <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
@@ -33,7 +33,7 @@
         </div><br>
 
         <ul>         
-            <li  *ngFor="let flight of filteredFlights | enter: departureCityField"> <!--| enter: departureCityField : index as i-->
+            <li  *ngFor="let flight of filteredFlights | enter: departureCityField : arrivalCityField"> <!--| enter: departureCityField : index as i-->
                 
                 <div > <!--*ngIf="flight.departureCity == departureCityField" -->
                     <a routerLink="/details/{{flight.id}}">                
