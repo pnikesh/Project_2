@@ -54,16 +54,18 @@ changed(obj) {
     this.searchFieldsContainInfo = false;
   }*/
 }
-// Destination City field
+// Destination City field Change Event
 destCityInput(obj){
 
-   this.tempFlights = this.filteredFlights; 
+   this.tempFlights = [];
+   this.filteredFlights = [];; 
  
   let vals = this.flights$;
   
   let i : number;     
   for (i =0; i < vals.length; i++ ){    
-    if ((vals[i].departureCity).toLowerCase().includes(obj)) {
+
+    if ((vals[i].departureCity).toLowerCase().startsWith(obj.toLowerCase())) {
       this.tempFlights.push(vals[i]);
     }  
   }
