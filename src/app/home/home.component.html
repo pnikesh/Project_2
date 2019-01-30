@@ -50,7 +50,8 @@
         </div><br>
 
         <ul>         
-            <li  *ngFor="let flight of filteredFlights | enter: departureCityField"> <!--| enter: departureCityField : index as i-->
+            <li  *ngFor="let flight of filteredFlights"> 
+                <!--<li  *ngFor="let flight of flights$"> <!--| enter: departureCityField"> <!--| enter: departureCityField : index as i-->
                 
                 <div > <!--*ngIf="flight.departureCity == departureCityField" -->
                     <a routerLink="/details/{{flight.id}}">                

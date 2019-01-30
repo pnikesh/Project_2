@@ -45,20 +45,7 @@ export class HomeComponent implements OnInit {
 // Destination City field Change Event
   destCityInput(obj){
 
-    this.tempFlights = [];
-    this.filteredFlights = [];; 
-  
-    let vals = this.flights$;
-    
-    let i : number;     
-    for (i =0; i < vals.length; i++ ){    
-
-      if ((vals[i].departureCity).toLowerCase().startsWith(obj.toLowerCase())) {
-        this.tempFlights.push(vals[i]);
-      }  
-    }
-    if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
-    this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+   
   } 
  
  // Arrival City field event
@@ -83,16 +70,43 @@ export class HomeComponent implements OnInit {
   changed(obj) {
 
     console.log(obj)
+
+    this.tempFlights = [];
+    this.filteredFlights = [];; 
+  
+    let vals = this.flights$;
+    
+    let i : number;    
+    
+    // Testing filter
+    //const result = vals.filter(word => word.startsWith(obj.toLowerCase()));
+
+    //
+    for (i =0; i < vals.length; i++ ){    
+
+      if ((vals[i].departureCity).toLowerCase().startsWith(obj.toLowerCase())) {
+        this.tempFlights.push(vals[i]);
+      }  
+    } 
+
+
+    if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
+    this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
   /*
     this.filteredFlights = []; 
-  */debugger;
-    if  (this.departureCityField == "" || this.departureCityField === undefined)    
-    {
-      if (this.arrivalCityField == "" || this.arrivalCityField === undefined) 
+  *///debugger;
+
+
+
+      // Clearing main page if all input fields empty
+      if  (this.departureCityField == "" || this.departureCityField === undefined)    
       {
-        this.searchFieldsContainInfo = false;
+        if (this.arrivalCityField == "" || this.arrivalCityField === undefined) 
+        {
+          this.searchFieldsContainInfo = false;
+        }
       }
-    }
+  
     
   }
 
