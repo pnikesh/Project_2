@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private data: DataService ) { }
 
+<<<<<<< HEAD
       // Extracting list of flights when component loads
       ngOnInit() {
         this.data.getAllFlights().subscribe(
@@ -85,10 +86,86 @@ export class HomeComponent implements OnInit {
       }  
     }
     this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
-    } 
+=======
+  // Extracting list of flights when component loads
+  ngOnInit() {
+    this.data.getAllFlights().subscribe(
+      data => {
+        this.flights$ = data;
+        console.log(this.flights$); 
+        let vals = Object.entries(this.flights$);
+        console.log(this.departureCityField, vals)
+      })  
+  } 
+
+// Destination City field Change Event
+  destCityInput(obj){
+
+   
+  } 
+ 
+ // Arrival City field event
+  arrCityInput(obj){
+
+  // this.filteredFlights = []; 
+
+  let vals = this.flights$;
+  
+  let i : number;     
+  for (i =0; i < vals.length; i++ ){    
+    if ((vals[i].arrivalCity).toLowerCase().includes(obj)) {
+      this.filteredFlights.push(vals[i]);
+    }  
+  }
+  this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+  } 
 
  
+// Event handlers of search fields updated
 
+  changed(obj) {
+
+    console.log(obj)
+
+    this.tempFlights = [];
+    this.filteredFlights = [];; 
+  
+    let vals = this.flights$;
+    
+    let i : number;    
+    
+    // Testing filter
+    //const result = vals.filter(word => word.startsWith(obj.toLowerCase()));
+
+    //
+    for (i =0; i < vals.length; i++ ){    
+
+      if ((vals[i].departureCity).toLowerCase().startsWith(obj.toLowerCase())) {
+        this.tempFlights.push(vals[i]);
+      }  
+>>>>>>> master
+    } 
+
+
+    if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
+    this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
+  /*
+    this.filteredFlights = []; 
+  *///debugger;
+
+
+
+      // Clearing main page if all input fields empty
+      if  (this.departureCityField == "" || this.departureCityField === undefined)    
+      {
+        if (this.arrivalCityField == "" || this.arrivalCityField === undefined) 
+        {
+          this.searchFieldsContainInfo = false;
+        }
+      }
+  
+    
+  }
 
 }
 

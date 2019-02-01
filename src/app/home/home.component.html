@@ -1,9 +1,11 @@
 <div class="container">
-    <div class="sidebar">
+    <!--<div class="sidebar">-->
+        <div class="header">
         <!--<app-sidebar></app-sidebar>-->
 
         <h3> Please use filters below to specify your choice</h3>
 
+<<<<<<< HEAD
         <h5>Departure City :</h5>
         <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />
 
@@ -23,6 +25,43 @@
         <input type="text" name="priceField"  [(ngModel)]="priceField"/>
         
         <button class="btn btn-danger" type="submit" (click)="search()">Search</button>
+=======
+            <div class="grid-container-top">
+                <div class="grid-item">
+                    <h5>Departure City :</h5>
+                    <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />
+                </div>
+                <div class="grid-item">
+                    <h5>Arrival City :</h5>
+                    <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()"/>
+                </div>    
+            
+           <!-- <br>-->
+            <!--<div class="row">-->
+                <div class="grid-item">
+                    <h5 >Departure Date :</h5>
+                    <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
+                </div>
+                <div class="grid-item">
+                    <h5>Arrival Date :</h5>
+                    <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
+                </div>
+           <!-- </div>-->
+            </div>
+            <div class="grid-container-bottom">
+          <!--  <div class="row">-->
+                    <div class="grid-item">
+                        <h5>Direct :</h5>
+                        <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
+                    </div>
+                    <div class="grid-item">
+                        <h5>Maximum price :</h5>
+                        <input type="number" name="priceField"  [(ngModel)]="priceField"/>
+                    </div>
+            <!--</div>-->
+          </div>
+        <!--<button class="btn btn-danger" type="submit" (click)="search()">Search</button>-->
+>>>>>>> master
     </div>
 
    
@@ -33,7 +72,12 @@
         </div><br>
 
         <ul>         
+<<<<<<< HEAD
             <li  *ngFor="let flight of filteredFlights | enter: departureCityField : arrivalCityField"> <!--| enter: departureCityField : index as i-->
+=======
+            <li  *ngFor="let flight of filteredFlights"> 
+                <!--<li  *ngFor="let flight of flights$"> <!--| enter: departureCityField"> <!--| enter: departureCityField : index as i-->
+>>>>>>> master
                 
                 <div > <!--*ngIf="flight.departureCity == departureCityField" -->
                     <a routerLink="/details/{{flight.id}}">                
