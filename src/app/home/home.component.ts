@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   departureDateField: string;
   arrivalDateField: string;
   isDirect: boolean;
+  isRound: boolean = false;
   priceField: number;
 
   public filteredFlights: Flight[] = [];
@@ -31,62 +32,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private data: DataService ) { }
 
-<<<<<<< HEAD
-      // Extracting list of flights when component loads
-      ngOnInit() {
-        this.data.getAllFlights().subscribe(
-          data => {
-            this.flights$ = data;
-            console.log(this.flights$); 
-            let vals = Object.entries(this.flights$);
-            console.log(this.departureCityField, vals)
-          })  
-      } 
-    // Event handlers of search fields updated
-
-    changed(obj) {
-
-      console.log(obj)
-    /*
-      this.filteredFlights = []; 
-
-      if ( (this.departureCityField == "" || this.departureCityField == "undefined") && 
-          (this.arrivalCityField == "" || this.arrivalCityField == "undefined")) {
-        this.searchFieldsContainInfo = false;
-      }*/
-    }
-    // Destination City field
-    destCityInput(obj){
-
-      //this.tempFlights = this.filteredFlights; 
-    
-      let vals = this.flights$;
-      
-      let i : number;     
-      for (i =0; i < vals.length; i++ ){    
-        if ((vals[i].departureCity).toLowerCase().includes(obj)) {
-          this.filteredFlights.push(vals[i]);
-        }  
-      }
-      //if (this.tempFlights.length != 0) this.filteredFlights = this.tempFlights;
-      this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
-    } 
-    
-    // Destination City field
-    arrCityInput(obj){
-
-    // this.filteredFlights = []; 
-
-    let vals = this.flights$;
-    
-    let i : number;     
-    for (i =0; i < vals.length; i++ ){    
-      if ((vals[i].arrivalCity).toLowerCase().includes(obj)) {
-        this.filteredFlights.push(vals[i]);
-      }  
-    }
-    this.filteredFlights.length == 0 ? this.searchFieldsContainInfo = false : this.searchFieldsContainInfo = true
-=======
   // Extracting list of flights when component loads
   ngOnInit() {
     this.data.getAllFlights().subscribe(
@@ -125,6 +70,8 @@ export class HomeComponent implements OnInit {
 
   changed(obj) {
 
+    
+
     console.log(obj)
 
     this.tempFlights = [];
@@ -143,7 +90,6 @@ export class HomeComponent implements OnInit {
       if ((vals[i].departureCity).toLowerCase().startsWith(obj.toLowerCase())) {
         this.tempFlights.push(vals[i]);
       }  
->>>>>>> master
     } 
 
 
