@@ -11,15 +11,24 @@ export class EnterPipe implements PipeTransform {
   
     var entries = Object.values(search); 
 
-    var filteredFlights = flights.filter(flight => {
+    var dCity;
+      entries[0] == undefined ? dCity = entries[0] = "" : dCity = entries[0].toLowerCase();
 
-      let var2;
-      entries[0] == undefined ? var2 = entries[0] = "" : var2 = entries[0].toLowerCase();
+      var aCity;
+      entries[1] == undefined ? aCity = entries[1] = "" : aCity = entries[1].toLowerCase();
 
-      let var3;
-      entries[1] == undefined ? var3 = entries[1] = "" : var3 = entries[1].toLowerCase();
+      var dDate;
+      entries[2] == undefined ? dDate = entries[2] = "" : dDate = entries[2].toLowerCase();
+
+      var aDate;
+      entries[3] == undefined ? aDate = entries[3] = "" : aDate = entries[3].toLowerCase();
+
+    var filteredFlights = flights.filter(flight => {     
     
-      let temp = flight.departureCity.toLocaleLowerCase().startsWith(var2) && flight.arrivalCity.toLocaleLowerCase().startsWith(var3);
+      let temp = flight.departureCity.toLocaleLowerCase().startsWith(dCity) 
+        && flight.arrivalCity.toLocaleLowerCase().startsWith(aCity)
+        && (flight.departureTime.toLocaleLowerCase().search(dDate) != -1)
+        && (flight.arrivalTime.toLocaleLowerCase().search(aDate) != -1);
       return  temp;
        
     })
