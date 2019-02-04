@@ -11,11 +11,11 @@
                 <div class="grid-container-top">
                     <div class="grid-item">
                         <h5>Departure City :</h5>
-                        <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />
+                        <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)"  /> <!--(ngModelChange)="changed($event)"-->
                     </div>
                     <div class="grid-item">
                         <h5>Arrival City :</h5>
-                        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()"/>
+                        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()" />  <!---->
                     </div>    
                 
             <!-- <br>-->
@@ -58,11 +58,11 @@
                 <div class="grid-container-top">
                     <div class="grid-item">
                         <h5>Departure City :</h5>
-                        <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />
+                        <input type="text" name="departureCityField" [(ngModel)]="departureCityField"/> <!-- (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />-->
                     </div>
                     <div class="grid-item">
                         <h5>Arrival City :</h5>
-                        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()"/>
+                        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" /> <!--(ngModelChange)="changed()"     -->
                     </div>    
                 
             <!-- <br>-->
@@ -104,8 +104,8 @@
         </div><br>
 
         <ul>         
-            <li  *ngFor="let flight of filteredFlights"> 
-                <!--<li  *ngFor="let flight of flights$"> <!--| enter: departureCityField"> <!--| enter: departureCityField : index as i-->
+            <!--<li  *ngFor="let flight of filteredFlights"> -->
+                <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField}; index as i">  
                 
                 <div > <!--*ngIf="flight.departureCity == departureCityField" -->
                     <a routerLink="/details/{{flight.id}}">                
