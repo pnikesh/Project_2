@@ -30,6 +30,12 @@
                     </div>
             <!-- </div>-->
                 </div>
+
+                <div class="grid-item ">
+                    <h5>Round Trip</h5>
+                    <input type="checkbox" checked="unChecked" name="isRound"  [(ngModel)]="isRound"  />
+                </div>
+
                 <div class="grid-container-bottom">
             <!--  <div class="row">-->
                         <div class="grid-item">
@@ -38,10 +44,7 @@
                         </div>
 
 
-                        <div class="grid-item ">
-                                <h5>Round Trip</h5>
-                                <input type="checkbox" checked="unChecked" name="isRound"  [(ngModel)]="isRound"  />
-                            </div>
+                        
 
                         <div class="grid-item">
                             <h5>Maximum price :</h5>
@@ -106,7 +109,7 @@
         <ul>         
             <!--<li  *ngFor="let flight of filteredFlights"> -->
                 <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField, 
-                       departureTime : departureDateField, arrivalTime: arrivalDateField}; index as i">  
+                       departureTime : departureDateField, arrivalTime: arrivalDateField, direct : isDirect, ticketPrice : priceField}; index as i">  
                 
                 <div > <!--*ngIf="flight.departureCity == departureCityField" -->
                     <a routerLink="/details/{{flight.id}}">                

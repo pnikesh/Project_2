@@ -23,14 +23,35 @@ export class EnterPipe implements PipeTransform {
       var aDate;
       entries[3] == undefined ? aDate = entries[3] = "" : aDate = entries[3].toLowerCase();
 
+      var direct = entries[4];
+
+      var price;
+      
+      entries[5] == undefined ? price = entries[5] = 1000000 : price = entries[5];
+
+
     var filteredFlights = flights.filter(flight => {     
     
+      if (direct) {
+        let temp = flight.departureCity.toLocaleLowerCase().startsWith(dCity) 
+        && flight.arrivalCity.toLocaleLowerCase().startsWith(aCity)
+        && (flight.departureTime.toLocaleLowerCase().search(dDate) != -1)
+        && (flight.arrivalTime.toLocaleLowerCase().search(aDate) != -1)
+        && flight.ticketPrice <= price
+        && flight.direct == entries[4];
+         return  temp;
+      }else {
+
+      
+
       let temp = flight.departureCity.toLocaleLowerCase().startsWith(dCity) 
         && flight.arrivalCity.toLocaleLowerCase().startsWith(aCity)
         && (flight.departureTime.toLocaleLowerCase().search(dDate) != -1)
-        && (flight.arrivalTime.toLocaleLowerCase().search(aDate) != -1);
+        && (flight.arrivalTime.toLocaleLowerCase().search(aDate) != -1)
+        && flight.ticketPrice <= price;
+        
       return  temp;
-       
+      }
     })
    // debugger;
     console.log(filteredFlights);
