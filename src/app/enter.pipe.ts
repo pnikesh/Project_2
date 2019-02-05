@@ -12,16 +12,16 @@ export class EnterPipe implements PipeTransform {
     var entries = Object.values(search); 
 
     var dCity;
-      entries[0] == undefined ? dCity = entries[0] = "" : dCity = entries[0].toLowerCase();
+      entries[0] == undefined ? dCity = entries[0] = "" : dCity = entries[0]//.toLowerCase();
 
       var aCity;
-      entries[1] == undefined ? aCity = entries[1] = "" : aCity = entries[1].toLowerCase();
+      entries[1] == undefined ? aCity = entries[1] = "" : aCity = entries[1]//.toLowerCase();
 
       var dDate;
-      entries[2] == undefined ? dDate = entries[2] = "" : dDate = entries[2].toLowerCase();
+      entries[2] == undefined ? dDate = entries[2] = "" : dDate = entries[2]//.toLowerCase();
 
       var aDate;
-      entries[3] == undefined ? aDate = entries[3] = "" : aDate = entries[3].toLowerCase();
+      entries[3] == undefined ? aDate = entries[3] = "" : aDate = entries[3]//.toLowerCase();
 
       var direct = entries[4];
 

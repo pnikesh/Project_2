@@ -1,149 +1,156 @@
 <div class="container">
-    <!--<div class="sidebar">-->
-        <div class="header">
-        <!--<app-sidebar></app-sidebar>-->
-
-        <h3> Please use filters below to specify your choice</h3>
-
-         <!-- FORWARD SECTION -->
-
-            <div>
-                <div class="grid-container-top">
-                    <div class="grid-item">
-                        <h5>Departure City :</h5>
-                        <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)"  /> <!--(ngModelChange)="changed($event)"-->
+        <!--<div class="sidebar">-->
+            <div class="header">
+            <!--<app-sidebar></app-sidebar>-->
+    
+            <h3> Please use filters below to specify your choice</h3>
+    
+             <!-- FORWARD SECTION -->
+    
+                <div>
+                    <div style="text-align: left; margin-left: 50px; color: green">
+                        <h3 *ngIf="isRound"> Forward Flight</h3>
                     </div>
-                    <div class="grid-item">
-                        <h5>Arrival City :</h5>
-                        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()" />  <!---->
-                    </div>    
+                    <div class="grid-container-top">
+                        <div class="grid-item">
+                            <h5>Departure City :</h5>
+                            <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)"  /> <!--(ngModelChange)="changed($event)"-->
+                        </div>
+                        <div class="grid-item">
+                            <h5>Arrival City :</h5>
+                            <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()" />  <!---->
+                        </div>    
+                    
+                <!-- <br>-->
+                    <!--<div class="row">-->
+                        <div class="grid-item">
+                            <h5 >Departure Date :</h5>
+                            <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
+                        </div>
+                        <div class="grid-item">
+                            <h5>Arrival Date :</h5>
+                            <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
+                        </div>
+                <!-- </div>-->
+                    </div>
+    
+                    <div class="grid-item ">
+                        <h5>Round Trip</h5>
+                        <input type="checkbox" checked="unChecked" name="isRound"  [(ngModel)]="isRound"  />
+                    </div>
+    
+                    <div class="grid-container-bottom">
+                <!--  <div class="row">-->
+                            <div class="grid-item">
+                                <h5>Direct :</h5>
+                                <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
+                            </div>
+    
+    
+                            
+    
+                            <div class="grid-item">
+                                <h5>Maximum price :</h5>
+                                <input type="number" name="priceField"  [(ngModel)]="priceField"/>
+                            </div>
+                    <!--</div>-->
+                    </div>
+                </div>
+                 <!-- END OF FORWARD SECTION -->
+    
+                <!-- RETURN SECTION -->
+    
+                <div *ngIf="isRound">
+                    <div style="text-align: left; margin-left: 50px; color: orangered">
+                         <h3> Return Flight</h3>
+                    </div>                
+                    <div class="grid-container-top">
+                        <div class="grid-item">
+                            <h5>Departure City :</h5>
+                            <input type="text" name="departureCityField" [(ngModel)]="departureCityField"/> <!-- (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />-->
+                        </div>
+                        <div class="grid-item">
+                            <h5>Arrival City :</h5>
+                            <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" /> <!--(ngModelChange)="changed()"     -->
+                        </div>    
+                    
+                <!-- <br>-->
+                    <!--<div class="row">-->
+                        <div class="grid-item">
+                            <h5 >Departure Date :</h5>
+                            <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
+                        </div>
+                        <div class="grid-item">
+                            <h5>Arrival Date :</h5>
+                            <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
+                        </div>
+                <!-- </div>-->
+                    </div>
+                    <div class="grid-container-bottom">
+                <!--  <div class="row">-->
+                            <div class="grid-item">
+                                <h5>Direct :</h5>
+                                <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
+                            </div>
+                            <div class="grid-item">
+                                <h5>Maximum price :</h5>
+                                <input type="number" name="priceField"  [(ngModel)]="priceField"/>
+                            </div>
+                    <!--</div>-->
+                    </div>
+                </div>
+    
+            <!-- END OF RETURN SECTION -->
+    
+            <!--<button class="btn btn-danger" type="submit" (click)="search()">Search</button>-->
+        </div>
+    
+       
+    
+        <div class="flights_content" *ngIf="searchFieldsContainInfo">
+                <div style="text-align: center">
+                <h1 > Here is the list of all flights available </h1>   
+            </div><br>
+    
+            <ul>         
+                <!--<li  *ngFor="let flight of filteredFlights"> -->
+                    <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField, 
+                           departureTime : departureDateField, arrivalTime: arrivalDateField, direct : isDirect, ticketPrice : priceField}; index as i">  
+                    
+                    <div > <!--*ngIf="flight.departureCity == departureCityField" -->
+                        <a routerLink="/details/{{flight.id}}">                
+                        <h3 class="flight_name">  Flight number : {{ flight.flightName }}</h3>
+    
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th> Departure City </th>
+                                        <th> Arrival City</th>
+                                        <th> Departure Time </th>
+                                        <th> Arrival Time </th>
+                                        <th> Direct </th>
+                                        <th> Price </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ flight.departureCity }}</td> <!-- | enter: departureCityField : i-->
+                                        <td> {{ flight.arrivalCity }}</td>
+                                        <td> {{ flight.departureTime }} </td>
+                                        <td> {{ flight.arrivalTime }}</td>
+                                        <td>
+                                           <div style="color:green" *ngIf="flight.direct;else unset"> Yes</div> 
+                                           <ng-template #unset>No </ng-template>
+                                        </td>
+                                        <td> {{ flight.ticketPrice }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                     </div>
+                </li>
                 
-            <!-- <br>-->
-                <!--<div class="row">-->
-                    <div class="grid-item">
-                        <h5 >Departure Date :</h5>
-                        <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
-                    </div>
-                    <div class="grid-item">
-                        <h5>Arrival Date :</h5>
-                        <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
-                    </div>
-            <!-- </div>-->
-                </div>
-
-                <div class="grid-item ">
-                    <h5>Round Trip</h5>
-                    <input type="checkbox" checked="unChecked" name="isRound"  [(ngModel)]="isRound"  />
-                </div>
-
-                <div class="grid-container-bottom">
-            <!--  <div class="row">-->
-                        <div class="grid-item">
-                            <h5>Direct :</h5>
-                            <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
-                        </div>
-
-
-                        
-
-                        <div class="grid-item">
-                            <h5>Maximum price :</h5>
-                            <input type="number" name="priceField"  [(ngModel)]="priceField"/>
-                        </div>
-                <!--</div>-->
-                </div>
-            </div>
-             <!-- END OF FORWARD SECTION -->
-
-            <!-- RETURN SECTION -->
-
-            <div *ngIf="isRound">
-                <div class="grid-container-top">
-                    <div class="grid-item">
-                        <h5>Departure City :</h5>
-                        <input type="text" name="departureCityField" [(ngModel)]="departureCityField"/> <!-- (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />-->
-                    </div>
-                    <div class="grid-item">
-                        <h5>Arrival City :</h5>
-                        <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" /> <!--(ngModelChange)="changed()"     -->
-                    </div>    
-                
-            <!-- <br>-->
-                <!--<div class="row">-->
-                    <div class="grid-item">
-                        <h5 >Departure Date :</h5>
-                        <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
-                    </div>
-                    <div class="grid-item">
-                        <h5>Arrival Date :</h5>
-                        <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
-                    </div>
-            <!-- </div>-->
-                </div>
-                <div class="grid-container-bottom">
-            <!--  <div class="row">-->
-                        <div class="grid-item">
-                            <h5>Direct :</h5>
-                            <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
-                        </div>
-                        <div class="grid-item">
-                            <h5>Maximum price :</h5>
-                            <input type="number" name="priceField"  [(ngModel)]="priceField"/>
-                        </div>
-                <!--</div>-->
-                </div>
-            </div>
-
-        <!-- END OF RETURN SECTION -->
-
-        <!--<button class="btn btn-danger" type="submit" (click)="search()">Search</button>-->
+            </ul>
+        </div>
     </div>
-
-   
-
-    <div class="flights_content" *ngIf="searchFieldsContainInfo">
-            <div style="text-align: center">
-            <h1 > Here is the list of all flights available </h1>   
-        </div><br>
-
-        <ul>         
-            <!--<li  *ngFor="let flight of filteredFlights"> -->
-                <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField, 
-                       departureTime : departureDateField, arrivalTime: arrivalDateField, direct : isDirect, ticketPrice : priceField}; index as i">  
-                
-                <div > <!--*ngIf="flight.departureCity == departureCityField" -->
-                    <a routerLink="/details/{{flight.id}}">                
-                    <h3 class="flight_name">  Flight number : {{ flight.flightName }}</h3>
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th> Departure City </th>
-                                    <th> Arrival City</th>
-                                    <th> Departure Time </th>
-                                    <th> Arrival Time </th>
-                                    <th> Direct </th>
-                                    <th> Price </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ flight.departureCity }}</td> <!-- | enter: departureCityField : i-->
-                                    <td> {{ flight.arrivalCity }}</td>
-                                    <td> {{ flight.departureTime }} </td>
-                                    <td> {{ flight.arrivalTime }}</td>
-                                    <td>
-                                       <div style="color:green" *ngIf="flight.direct;else unset"> Yes</div> 
-                                       <ng-template #unset>No </ng-template>
-                                    </td>
-                                    <td> {{ flight.ticketPrice }} </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </a>
-                 </div>
-            </li>
-            
-        </ul>
-    </div>
-</div>
+    
