@@ -1,13 +1,13 @@
 <div class="container">
         <!--<div class="sidebar">-->
-            <div class="header">
+            <div>
             <!--<app-sidebar></app-sidebar>-->
     
             <h3> Please use filters below to specify your choice</h3>
     
              <!-- FORWARD SECTION -->
     
-                <div>
+                <div  class="header">
                     <div style="text-align: left; margin-left: 50px; color: green">
                         <h3 *ngIf="isRound"> Forward Flight</h3>
                     </div>
@@ -60,7 +60,7 @@
     
                 <!-- RETURN SECTION -->
     
-                <div *ngIf="isRound">
+                <div  class="header" *ngIf="isRound">
                     <div style="text-align: left; margin-left: 50px; color: orangered">
                          <h3> Return Flight</h3>
                     </div>                
@@ -124,7 +124,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th> Departure City </th>
+                                        <th> Ticket Type </th>
                                         <th> Arrival City</th>
                                         <th> Departure Time </th>
                                         <th> Arrival Time </th>
