@@ -15,7 +15,7 @@ export class FlightDetailsComponent implements OnInit {
 flightId: number;
 flight$: object;
 showForm = false;
-
+showCodeField = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
@@ -42,6 +42,15 @@ showForm = false;
 
   onDiscard(){
     this.router.navigate(['/home']);
+  }
+
+  onConfirm(){
+    this.showForm = false;
+    this.showCodeField = true;
+  }
+
+  onCodeEntered(){
+   
   }
  
 

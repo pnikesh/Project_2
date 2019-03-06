@@ -27,4 +27,18 @@
     <br> 
     <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
   </div>
+  <div class="verification" *ngIf="showCodeField"> <!---->
+
+      <h3> Please Enter Verification Code </h3>
+      <br>
+      <input type="number" name="enteredCode" [(ngModel)]="enteredCode" placeholder="Enter Code"  />
+      <br>      
+  
+      <button class="confirmBtn button" type="submit" (click)="onCodeEntered()">Confirm</button>
+      <br> 
+      <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
+    </div>
+
 </div>
+
+
