@@ -21,6 +21,7 @@ email: string = '';
 fullName: string = '';
 isCodeEntered = false;
 enteredCode: number;
+chosen = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
@@ -42,6 +43,7 @@ enteredCode: number;
   onChoose() {
     let chosenFlight = this.flight$;
     this.showForm = true;
+    this.chosen = false;
     console.log(chosenFlight);
   }
 

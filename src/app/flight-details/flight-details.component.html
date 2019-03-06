@@ -9,10 +9,12 @@
         <li> <strong> Ticket Price: </strong> {{ flight$.ticketPrice }}</li>
     </ul>
 
-    <a routerLink="/home"> <button class="discardBtn button">Back to Flights</button> </a>
+      <div *ngIf="chosen">  <a routerLink="/home"> <button class="discardBtn button">Back to Flights</button> </a>
 
-  <!--<a class="book_button" href="home" title="Back to Flights">Book this Flight</a>-->
-  <button class="confirmBtn button" type="submit" (click)="onChoose()">Choose</button>  
+       <!--<a class="book_button" href="home" title="Back to Flights">Book this Flight</a>-->
+      <button class="confirmBtn button" type="submit" (click)="onChoose()">Choose</button>  
+  </div>
+
 
   <div class="form" *ngIf="showForm">
 
