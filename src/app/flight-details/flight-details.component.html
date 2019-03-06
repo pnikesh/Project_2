@@ -20,7 +20,7 @@
     <br>
     <input type="text" name="fullName" [(ngModel)]="fullName" placeholder="Enter Your Full Name"  />
     <br>
-    <input type="email" name="emal" [(ngModel)]="email" placeholder="Enter Your Email"  />    
+    <input type="email" pattern=".+@globex.com" size="30" required name="email" [(ngModel)]="email" placeholder="Enter Your Email"  />    
     <br>
 
     <button class="confirmBtn button" type="submit" (click)="onConfirm()">Confirm Email</button>
