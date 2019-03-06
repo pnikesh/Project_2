@@ -1,11 +1,16 @@
+.container {
+    text-align: center;
+}
+
 a {
-    text-decoration: none;
+   /* text-decoration: none;
     border: 1px solid #0A4970;
     border-radius: 4px;
     background: #F1BDB7;
     padding: 4px;
-    color: #0A4970;
+    color: #0A4970;*/
     margin-right: 30px;
+ 
 }
 a:hover {
     background: rgb(247, 247, 188);
@@ -21,3 +26,39 @@ ul {
     background: honeydew;
 }
 
+.form {
+    /*border: 2px solid #4561F7;
+    border-radius: 6px;
+    margin: 20px 350px;*/
+}
+
+.form input {
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+    height: 40px;
+}
+
+.button {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.confirmBtn {
+    background: #36F135;
+}
+
+.confirmBtn:hover {
+    background: rgb(247, 247, 188);
+    color: #4561F7;
+}
+.discardBtn {
+    background: #F1BDB7;
+}
+
+.discardBtn:hover {
+    background: lightyellow;
+    color: #4561F7;
+}
