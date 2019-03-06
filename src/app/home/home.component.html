@@ -1,6 +1,6 @@
 <div class="container">
         <!--<div class="sidebar">-->
-            <div>
+            <div style="text-align: center">
             <!--<app-sidebar></app-sidebar>-->
     
             <h3> Please use filters below to specify your choice</h3>
@@ -13,36 +13,36 @@
                     </div>
                     <div class="grid-container-top">
                         <div class="grid-item">
-                            <h5>Departure City :</h5>
+                            <h3>Departure City :</h3>
                             <input type="text" name="departureCityField" [(ngModel)]="departureCityField" (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)"  /> <!--(ngModelChange)="changed($event)"-->
                         </div>
                         <div class="grid-item">
-                            <h5>Arrival City :</h5>
+                            <h3>Arrival City :</h3>
                             <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed()" />  <!---->
                         </div>    
                     
                 <!-- <br>-->
                     <!--<div class="row">-->
                         <div class="grid-item">
-                            <h5 >Departure Date :</h5>
+                            <h3 >Departure Date :</h3>
                             <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
                         </div>
                         <div class="grid-item">
-                            <h5>Arrival Date :</h5>
+                            <h3>Arrival Date :</h3>
                             <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
                         </div>
                 <!-- </div>-->
                     </div>
     
                     <div class="grid-item ">
-                        <h5>Round Trip</h5>
+                        <h3>Round Trip</h3>
                         <input type="checkbox" checked="unChecked" name="isRound"  [(ngModel)]="isRound"  />
                     </div>
     
                     <div class="grid-container-bottom">
                 <!--  <div class="row">-->
                             <div class="grid-item">
-                                <h5>Direct :</h5>
+                                <h3>Direct :</h3>
                                 <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
                             </div>
     
@@ -50,14 +50,13 @@
                             
     
                             <div class="grid-item">
-                                <h5>Maximum price :</h5>
+                                <h3>Maximum price :</h3>
                                 <input type="number" name="priceField"  [(ngModel)]="priceField"/>
                             </div>
                     <!--</div>-->
                     </div>
                 </div>
-                 <!-- END OF FORWARD SECTION -->
-    
+                 <!-- END OF FORWARD SECTION -->    
                 <!-- RETURN SECTION -->
     
                 <div  class="header" *ngIf="isRound">
@@ -66,22 +65,22 @@
                     </div>                
                     <div class="grid-container-top">
                         <div class="grid-item">
-                            <h5>Departure City :</h5>
+                            <h3>Departure City :</h3>
                             <input type="text" name="departureCityField" disabled [(ngModel)]="arrivalCityField"/> <!-- (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)" />-->
                         </div>
                         <div class="grid-item">
-                            <h5>Arrival City :</h5>
+                            <h3>Arrival City :</h3>
                             <input type="text" name="arrivalCityField" disabled [(ngModel)]="departureCityField"  (ngModelChange)="arrCityInput($event)" /> <!--(ngModelChange)="changed()"     -->
                         </div>    
                     
                 <!-- <br>-->
                     <!--<div class="row">-->
                         <div class="grid-item">
-                            <h5 >Departure Date :</h5>
+                            <h3 >Departure Date :</h3>
                             <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
                         </div>
                         <div class="grid-item">
-                            <h5>Arrival Date :</h5>
+                            <h3>Arrival Date :</h3>
                             <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
                         </div>
                 <!-- </div>-->
@@ -89,11 +88,11 @@
                     <div class="grid-container-bottom">
                 <!--  <div class="row">-->
                             <div class="grid-item">
-                                <h5>Direct :</h5>
+                                <h3>Direct :</h3>
                                 <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
                             </div>
                             <div class="grid-item">
-                                <h5>Maximum price :</h5>
+                                <h3>Maximum price :</h3>
                                 <input type="number" name="priceField"  [(ngModel)]="priceField"/>
                             </div>
                     <!--</div>-->
