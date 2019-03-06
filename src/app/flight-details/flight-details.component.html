@@ -17,6 +17,7 @@
   <div class="form" *ngIf="showForm">
 
     <h3> Please Fill Form Below </h3>
+    <h4 *ngIf="isNotValid" style="color: red"> Fields are Mandatory! </h4>
     <br>
     <input type="text" name="fullName" [(ngModel)]="fullName" placeholder="Enter Your Full Name"  />
     <br>
@@ -29,8 +30,10 @@
   </div>
   <div class="verification" *ngIf="showCodeField"> <!---->
 
-      <h3> Please Enter Verification Code </h3>
+      <h3> Please Enter Verification Code Sent You by Email</h3>
       <br>
+      <h4 *ngIf="isCodeEntered" style="color: red"> Please Enter the Code or Hit Discard Button </h4>
+    <br>
       <input type="number" name="enteredCode" [(ngModel)]="enteredCode" placeholder="Enter Code"  />
       <br>      
   

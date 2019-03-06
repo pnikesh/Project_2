@@ -16,6 +16,11 @@ flightId: number;
 flight$: object;
 showForm = false;
 showCodeField = false;
+isNotValid = false;
+email: string = '';
+fullName: string = '';
+isCodeEntered = false;
+enteredCode: number;
 
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
@@ -45,12 +50,21 @@ showCodeField = false;
   }
 
   onConfirm(){
-    this.showForm = false;
-    this.showCodeField = true;
+
+    if (this.email != "" && this.fullName != "") {
+      this.showForm = false;
+      this.showCodeField = true;
+    }else {
+      this.isNotValid = true;
+    }
+  
   }
 
   onCodeEntered(){
-   
+   if (this.enteredCode != undefined ) {
+
+   }else 
+   this.isCodeEntered = true;
   }
  
 
