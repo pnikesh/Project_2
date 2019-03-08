@@ -1,15 +1,51 @@
-<h1>{{ flight$.flightName }}</h1>
+<div class="container">
+  <h1> Booking of Flight <span style="color: green;">{{ flight$.flightName }} </span> </h1>
+    <ul>
+        <li> <strong> Departure City: </strong>{{ flight$.departureCity }}</li>
+        <li> <strong> Arrival City: </strong>  {{ flight$.arrivalCity }}</li>
+        <li> <strong> Departure Date: </strong> {{ flight$.departureTime | date }}</li>
+        <li> <strong> Arrival Date: </strong>{{ flight$.arrivalTime | date }}</li>
+        <li> <strong> Direct: </strong> {{ flight$.direct }}</li>
+        <li> <strong> Ticket Price: </strong> {{ flight$.ticketPrice }}</li>
+    </ul>
 
-<ul>
-  <li>{{ flight$.departureCity }}</li>
-        <li>{{ flight$.arrivalCity }}</li>
-        <li>{{ flight$.departureTime }}</li>
-        <li>{{ flight$.arrivalTime }}</li>
-        <li>{{ flight$.direct }}</li>
-        <li>{{ flight$.ticketPrice }}</li>
-</ul>
+      <div *ngIf="chosen">  <a routerLink="/home"> <button class="discardBtn button">Back to Flights</button> </a>
 
-<a href="home" title="Back to Flights">Back to Flights</a>
+       <!--<a class="book_button" href="home" title="Back to Flights">Book this Flight</a>-->
+      <button class="confirmBtn button" type="submit" (click)="onChoose()">Choose</button>  
+  </div>
 
-<!--<a class="book_button" href="home" title="Back to Flights">Book this Flight</a>-->
-<button type="submit">Choose</button>
+
+  <div class="form" *ngIf="showForm">
+
+    <h3> Please Fill Form Below </h3>
+    <h4 *ngIf="isNotValid" style="color: red"> Fields are Mandatory! </h4>
+    <br>
+    <input type="text" name="fullName" [(ngModel)]="fullName" placeholder="Enter Your Full Name"  />
+    <br>
+    <input type="email" pattern=".+@globex.com" size="30" required name="email" [(ngModel)]="email" placeholder="Enter Your Email"  />    
+    <br>
+
+    <button class="confirmBtn button" type="submit" (click)="onConfirm()">Confirm Email</button>
+    <br> 
+    <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
+  </div>
+  <div class="verification" *ngIf="showCodeField"> <!---->
+
+      <h3> Please Enter Verification Code Sent You by Email</h3>
+      <br>
+      <h4 *ngIf="isCodeEntered" style="color: red"> Please Enter the Code or Hit Discard Button </h4>
+    <br>
+      <input type="number" name="enteredCode" [(ngModel)]="enteredCode" placeholder="Enter Code"  />
+      <br>      
+  
+      <button class="confirmBtn button" type="submit" (click)="onCodeEntered()">Confirm</button>
+      <br> 
+      <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
+    </div>
+
+    <h2 style="color: red" *ngIf="codeIncorrect"> Code is Incorrect. Please try again </h2>
+
+</div>
+
+

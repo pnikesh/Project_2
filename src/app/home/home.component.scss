@@ -14,13 +14,17 @@
     display: grid;
     grid-template-columns: auto auto;
     max-height: 95px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     margin-top: -10px;
 }
 
 .grid-item{
     //padding-bottom: 30px;
     text-align: center;
+    margin-top: 10px;
+}
+.grid-item h5 {
+    font-weight: 700;
 }
 .sidebar{
     background: #C3CFD7;
@@ -40,8 +44,13 @@
     float: left;
 }
 
-input {
-    margin-left: 10px;
+.grid-item input {
+    margin-left: 10px;    
+    border-radius: 5px;
+    margin: 10px;
+    width: 170px;
+    height: 30px;
+       
 }
 ul {
     list-style-type: none;
