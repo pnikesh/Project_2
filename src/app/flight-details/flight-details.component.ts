@@ -15,7 +15,7 @@ declare var $: any;
 export class FlightDetailsComponent implements OnInit {
 
 flightId: number;
-flight$: object;
+flight$: any;
 showForm = false;
 showCodeField = false;
 isNotValid = false;
