@@ -13,6 +13,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
 import { EnterPipe } from './enter.pipe';
+import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EnterPipe } from './enter.pipe';
     WelcomeComponent,
     SidebarComponent,
     FlightDetailsComponent,
-    EnterPipe
+    EnterPipe,
+    BookConfirmationComponent
   ],
   imports: [
     BrowserModule,

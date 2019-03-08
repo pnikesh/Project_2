@@ -3,6 +3,8 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from "@angular/router";
 import { concat } from 'rxjs/internal/observable/concat';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { checkNoChangesNode } from '@angular/core/src/view/view';
 declare var $: any;
 
 @Component({
@@ -22,6 +24,8 @@ fullName: string = '';
 isCodeEntered = false;
 enteredCode: number;
 chosen = true;
+code: object;
+codeIncorrect = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
@@ -56,17 +60,39 @@ chosen = true;
     if (this.email != "" && this.fullName != "") {
       this.showForm = false;
       this.showCodeField = true;
+
+      this.data.getVerificationCode(this.email).subscribe(
+        data => {
+          this.code = data;
+          console.log(this.code); 
+
+        })
+
     }else {
       this.isNotValid = true;
     }
-  
+
   }
 
   onCodeEntered(){
-   if (this.enteredCode != undefined ) {
+
+    if (this.enteredCode != undefined ) {
+
+    this.checkCode(this.code, this.enteredCode);
 
    }else 
    this.isCodeEntered = true;
+  }
+
+  checkCode(code, enteredCode) {
+
+    if (code.code == enteredCode)
+      //console.log("match")
+      this.router.navigate(['/book_confirmation']);
+      else
+      //console.log("not match")
+      this.codeIncorrect = true;
+
   }
  
 

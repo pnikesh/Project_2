@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
+import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: FlightDetailsComponent
+  },
+  {
+    path: 'book_confirmation',
+    component: BookConfirmationComponent
   }
 ];
 
