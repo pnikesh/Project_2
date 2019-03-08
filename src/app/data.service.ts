@@ -16,4 +16,8 @@ export class DataService {
    // console.log(this.flight$)
     return this.http.get('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/flights/'+ flightId)
   }
+
+  getVerificationCode(email) {
+    return this.http.get('https://localhost:44310/api/customers/code?email=' + email)
+  }
 }
