@@ -15,6 +15,7 @@ import { FlightDetailsComponent } from './flight-details/flight-details.componen
 import { EnterPipe } from './enter.pipe';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BookConfirmationComponent } from './book-confirmation/book-confirmation
     FlightDetailsComponent,
     EnterPipe,
     UserdetailsComponent,
-    BookConfirmationComponent
+    BookConfirmationComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
