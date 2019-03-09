@@ -97,3 +97,17 @@ button {
    color: red; 
 }
 
+.history {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: lightskyblue;
+}
+
+button.history.button {
+    color: black;
+    font-weight: 700;
+}
+

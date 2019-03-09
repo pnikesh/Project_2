@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common/src/pipes/date_pipe';
 import { isArray } from 'util';
 import { ArrayType, collectExternalReferences } from '@angular/compiler/src/output/output_ast';
 import { Flight } from '../flight';
+import { Router }  from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   flight: any;
 
-  constructor(private data: DataService ) { }
+  constructor(private data: DataService, private router: Router ) { }
 
   // Extracting list of flights when component loads
   ngOnInit() {
@@ -111,6 +112,11 @@ export class HomeComponent implements OnInit {
       }
   
     
+  }
+
+  onHistory() {
+
+    this.router.navigate(['history']);
   }
 
 }

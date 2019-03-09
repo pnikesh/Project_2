@@ -6,6 +6,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
+import { HistoryComponent } from 'src/app/history/history.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'book_confirmation',
     component: BookConfirmationComponent
+  },
+  {
+    path: 'history',
+    component: HistoryComponent
   }
 ];
 
