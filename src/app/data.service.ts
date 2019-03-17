@@ -26,4 +26,8 @@ export class DataService {
     return this.http.get('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/customers/code?email=' + email)
     //return this.http.get('https://localhost:44310/api/customers/code?email=' + email) 
   }
+
+  getCustomerHistory(email){
+    return this.http.get('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/tickets/ticketslist?email=' + email)
+  }
 }
