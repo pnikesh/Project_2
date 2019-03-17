@@ -7,6 +7,8 @@ import { FlightDetailsComponent } from './flight-details/flight-details.componen
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
 import { HistoryComponent } from 'src/app/history/history.component';
+import { componentFactoryName } from '@angular/compiler';
+import { PaymentpageComponent } from './paymentpage/paymentpage.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,10 @@ const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent
+  },
+  {
+    path:'payment',
+    component:PaymentpageComponent
   }
 ];
 

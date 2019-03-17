@@ -16,6 +16,7 @@ import { EnterPipe } from './enter.pipe';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
 import { HistoryComponent } from './history/history.component';
+import { PaymentpageComponent } from './paymentpage/paymentpage.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HistoryComponent } from './history/history.component';
     EnterPipe,
     UserdetailsComponent,
     BookConfirmationComponent,
-    HistoryComponent
+    HistoryComponent,
+    PaymentpageComponent
   ],
   imports: [
     BrowserModule,
