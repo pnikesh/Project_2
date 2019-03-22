@@ -88,7 +88,7 @@ codeIncorrect = false;
 
     if (code.code == enteredCode)
       //console.log("match")
-      this.router.navigate(['/book_confirmation']);
+      this.router.navigate(['/payment']);
       else
       //console.log("not match")
       this.codeIncorrect = true;
