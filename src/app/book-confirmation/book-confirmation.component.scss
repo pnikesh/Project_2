@@ -16,6 +16,16 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.form{
+  text-align: center;
+}
+
+.back_btn {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+}
+
 @mixin center {
   position: relative;
   top: 50%;
@@ -36,7 +46,8 @@ Boarding Pass
   box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
   overflow: hidden;
   text-transform: uppercase;
-  margin-top: 20%;
+  transform: translateY(0%);
+  transform: translateX(-40%);
 
 
   small {
