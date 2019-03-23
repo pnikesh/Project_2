@@ -83,6 +83,7 @@ public customerId: number;
 
   onCodeEntered(){
 
+    debugger
     if (this.enteredCode != undefined ) {
 
     this.checkCode(this.code, this.enteredCode);
@@ -99,16 +100,19 @@ public customerId: number;
       //console.log("match")
       //
 
+     // var id = this.getCustomerId(this.email);
+
+
       // Retrieving customer from back end
 
         this.data.getCustomerByEmail(this.email).subscribe(
           data => {
             this.customer = data;
-            this.customerId = this.customer.id;
-            console.log(this.customer.id);
+            this.customerId = this.customer;
+            console.log(this.customer);
           }
         )
-        
+       
 
         // Adding ticket to DB 
 
@@ -132,6 +136,9 @@ public customerId: number;
           )
           
         /////////////////////////
+
+
+        debugger
         this.router.navigate(['/payment']);
 
       }
@@ -142,6 +149,19 @@ public customerId: number;
       //console.log("not match")
       this.codeIncorrect = true;
 
+  }
+
+  getCustomerId(email){
+
+         // Retrieving customer from back end
+
+         this.data.getCustomerByEmail(email).subscribe(
+          data => {
+            this.customer = data;
+            this.customerId = this.customer.id;
+            console.log(this.customer.id);
+            return this.customer.id;
+          });
   }
  
 
