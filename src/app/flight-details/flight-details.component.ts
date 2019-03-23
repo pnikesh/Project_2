@@ -87,6 +87,8 @@ public customerId: number;
 
     this.checkCode(this.code, this.enteredCode);
 
+    console.log("ID " + this.customerId);
+
    }else 
    this.isCodeEntered = true;
   }
