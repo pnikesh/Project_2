@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from "@angular/router";
+import { Ticket } from '../ticket';
 import { concat } from 'rxjs/internal/observable/concat';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { checkNoChangesNode } from '@angular/core/src/view/view';
+
 declare var $: any;
 
 @Component({
@@ -27,7 +29,10 @@ chosen = true;
 code: object;
 codeIncorrect = false;
 
-customer: any;
+public customer: any;
+//public ticket: Ticket;
+ticket: any;
+public customerId: number;
 
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
@@ -90,20 +95,46 @@ customer: any;
 
     if (code.code == enteredCode) {
       //console.log("match")
-      this.router.navigate(['/payment']);
+      //
 
       // Retrieving customer from back end
 
         this.data.getCustomerByEmail(this.email).subscribe(
           data => {
             this.customer = data;
+            this.customerId = this.customer.id;
             console.log(this.customer.id);
           }
         )
+        
+
+        // Adding ticket to DB 
+
+        
+       // this.ticket.customerId = this.customer.id;
+        this.ticket = {
+          ticketType: "Economy",
+          price: this.flight$.ticketPrice,
+          isRound: false,
+          departureTimeFrom: "2018-02-12",
+          arrivalTimeFrom: "2018-02-12",
+          departureTimeTo: "",
+          arrivalTimeTo: "",
+          orderId: 1000,
+          customerId: 0
+
+        };
+
+          this.data.addTicket(this.ticket).subscribe(
+            data => this.ticket = data
+          )
+          
+        /////////////////////////
+        this.router.navigate(['/payment']);
+
       }
 
-
-
+      ///////////////////////////////////////
 
       else
       //console.log("not match")
