@@ -34,6 +34,8 @@ public customer: any;
 ticket: any;
 public customerId: number;
 
+confirmedToBuy: boolean = false;
+
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
    }
@@ -99,11 +101,16 @@ public customerId: number;
     if (code.code == enteredCode) {
       //console.log("match")
       //
+
+      this.confirmedToBuy = true; // Show Buy button
+
       let newCustomer = {
         fullname: this.fullName,
         email: this.email
       }
 
+
+      // Adding not NEW CUSTOMER functionality goes here !!!
       /*
       this.data.addCustomer(newCustomer).subscribe(
         data => this.customer = data

@@ -32,17 +32,17 @@
   </div>
   <div class="verification" *ngIf="showCodeField"> <!---->
 
-      <h3> Please Enter Verification Code Sent You by Email</h3>
+      <h3 *ngIf="!confirmedToBuy" > Please Enter Verification Code Sent You by Email</h3>
       <br>
       <h4 *ngIf="isCodeEntered" style="color: red"> Please Enter the Code or Hit Discard Button </h4>
     <br>
-      <input type="number" name="enteredCode" [(ngModel)]="enteredCode" placeholder="Enter Code"  />
+      <input *ngIf="!confirmedToBuy" type="number" name="enteredCode" [(ngModel)]="enteredCode" placeholder="Enter Code"  />
       <br>      
   
-      <button class="confirmBtn button" type="submit" (click)="onCodeEntered()">Confirm</button>
+      <button *ngIf="!confirmedToBuy" class="confirmBtn button" type="submit" (click)="onCodeEntered()">Confirm</button>
       <br> 
 
-      <button class="confirmBtn button" type="submit" (click)="onBuy()">Buy</button>
+      <button *ngIf="confirmedToBuy" class="confirmBtn button" type="submit" (click)="onBuy()">Buy</button>
       <br> 
       <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
     </div>
