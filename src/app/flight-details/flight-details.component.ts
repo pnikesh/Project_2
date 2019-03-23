@@ -27,6 +27,8 @@ chosen = true;
 code: object;
 codeIncorrect = false;
 
+customer: any;
+
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) {
     this.route.params.subscribe( params => this.flightId = params.id );
    }
@@ -86,9 +88,23 @@ codeIncorrect = false;
 
   checkCode(code, enteredCode) {
 
-    if (code.code == enteredCode)
+    if (code.code == enteredCode) {
       //console.log("match")
       this.router.navigate(['/payment']);
+
+      // Retrieving customer from back end
+
+        this.data.getCustomerByEmail(this.email).subscribe(
+          data => {
+            this.customer = data;
+            console.log(this.customer.id);
+          }
+        )
+      }
+
+
+
+
       else
       //console.log("not match")
       this.codeIncorrect = true;

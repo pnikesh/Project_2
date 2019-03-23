@@ -30,4 +30,8 @@ export class DataService {
   getCustomerHistory(email){
     return this.http.get('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/tickets/ticketslist?email=' + email)
   }
+
+  getCustomerByEmail(email){
+    return this.http.get('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/customers/email?email=' + email)
+  }
 }
