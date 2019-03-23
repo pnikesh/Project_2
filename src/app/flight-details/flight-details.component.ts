@@ -103,10 +103,12 @@ public customerId: number;
         fullname: this.fullName,
         email: this.email
       }
+
+      /*
       this.data.addCustomer(newCustomer).subscribe(
         data => this.customer = data
       )
-        
+       */ 
       
 
      // var id = this.getCustomerId(this.email);
@@ -124,7 +126,7 @@ public customerId: number;
        
         this.addTicketToDB();
        //       debugger
-        this.router.navigate(['/payment']);
+       // this.router.navigate(['/payment']);
 
       }
 
@@ -136,29 +138,35 @@ public customerId: number;
 
   }
 
+  onBuy(){
 
+    let c = this.customer;
+
+    this.ticket = {
+      ticketType: "Economy",
+      price: this.flight$.ticketPrice,
+      isRound: false,
+      departureTimeFrom: this.flight$.departureTime,
+      arrivalTimeFrom: this.flight$.arrivalTime,
+      departureTimeTo: "",
+      arrivalTimeTo: "",
+      orderId: 1000,
+      customerId: this.customer.id
+
+    };
+
+      this.data.addTicket(this.ticket).subscribe(
+        data => this.ticket = data
+      )
+
+  }
   addTicketToDB(){
           // Adding ticket to DB 
 
           var cust = this.customer;
         
        // this.ticket.customerId = this.customer.id;
-       this.ticket = {
-        ticketType: "Economy",
-        price: this.flight$.ticketPrice,
-        isRound: false,
-        departureTimeFrom: this.flight$.departureTime,
-        arrivalTimeFrom: this.flight$.arrivalTime,
-        departureTimeTo: "",
-        arrivalTimeTo: "",
-        orderId: 1000,
-        customerId: 0
-
-      };
-
-        this.data.addTicket(this.ticket).subscribe(
-          data => this.ticket = data
-        )
+       
         
       /////////////////////////
   }
