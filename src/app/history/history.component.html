@@ -1,6 +1,6 @@
 <div  class="container">
 
-  <div class="form" >
+  <div *ngIf="!showList" class="form" >
 
       <h3> To See the History, please enter Your Email </h3>
       <h4 *ngIf="isNotValid" style="color: red"> Fields are Mandatory! </h4>
@@ -21,4 +21,55 @@
 
       <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
     </div>
+
+
+
+    <div *ngIf="showList" class="list">
+
+        <h1> List of Tickets History for {{ email }}</h1>
+
+        <ul>         
+          <!--<li  *ngFor="let flight of filteredFlights"> -->
+              <li  *ngFor="let ticket of tickets">  
+              
+              <div > 
+                  <a> <!--</a> routerLink="/flight_details/{{flight.id}}">-->                
+                  <!--<h3 class="flight_name">  Flight number : {{ flight.flightName }}</h3>-->
+    
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th> Ticket Type  </th>
+                                  <th> Forward Departure Time</th>
+                                  <th> Forward Arrival Time </th>
+                                  <th> Return Departure Time </th>
+                                  <th> Return Departure Time </th>
+                                  <th> Direct </th>
+                                  <th> Price </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>{{ ticket.ticketType }}</td> <!-- | enter: departureCityField : i-->
+                                  <td> {{ ticket.departureTimeTo }}</td>
+                                  <td> {{ ticket.arrivalTimeTo }} </td>
+                                  <td> {{ ticket.departureTimeFrom }}</td>
+                                  <td> {{ ticket.arrivalTimeFrom }}</td>
+                                  <td>
+                                     <div style="color:green" *ngIf="ticket.isRound;else unset"> Yes</div> 
+                                     <ng-template #unset>No </ng-template>
+                                  </td>
+                                  <td> {{ ticket.price }} </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </a>
+               </div>
+          </li>
+          
+      </ul>
+
+    </div>
+
+
 </div>

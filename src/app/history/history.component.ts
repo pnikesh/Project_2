@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute} from "@angular/router";
+import { Ticket } from '../ticket';
 
 @Component({
   selector: 'app-history',
@@ -23,6 +24,10 @@ export class HistoryComponent implements OnInit {
   enteredCode: number;
   isCodeEntered: boolean = false;
   codeIncorrect: boolean = false;
+
+  showList: boolean = false;
+
+  tickets: any;
 
 
   ngOnInit() {
@@ -63,11 +68,21 @@ export class HistoryComponent implements OnInit {
   checkCode(code, enteredCode) {
 
     if (code.code == enteredCode)
-      //console.log("match")
-      this.router.navigate(['/payment']);
+
+      this.showList = true;
       else
       //console.log("not match")
       this.codeIncorrect = true;
+
+      // Getting customer's history
+      this.data.getCustomerHistory(this.email).subscribe(
+        data => {
+          this.tickets = data;
+          console.log(this.tickets);
+          let vals = Object.entries(this.tickets);
+        //console.log(this.departureCityField, vals)
+        }
+      )
 
   }
  
