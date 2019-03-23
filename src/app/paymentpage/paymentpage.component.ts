@@ -8,14 +8,32 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class PaymentpageComponent implements OnInit {
 
+  ccnum: number;
+  ismorenumber=false;
+  cname:string='';
+  city:string='';
+  fname:string='';
+  adr:string='';
+  email:string='';
+  state:string='';
+  zip:string='';
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   onpay(){
+    if(this.cname.trim()=="" || this.email.trim()=="" || this.city.trim()=="" || this.fname.trim()=="" || this.adr.trim()=="" || this.state.trim()==""||this.zip.trim()=="") 
+    {
+      this.ismorenumber=true;
+    }
+    else
+    {
     this.router.navigate(['/book_confirmation']);
+    }
   }
+
   
 }
 

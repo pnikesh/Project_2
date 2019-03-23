@@ -7,22 +7,22 @@
           <div class="col-50">
             <h3>Billing Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <input type="text" id="fname" [(ngModel)]="fname" name="firstname" placeholder="John M. Doe">
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <input type="text" id="email" [(ngModel)]="email" name="email" placeholder="john@example.com">
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <input type="text" id="adr" [(ngModel)]="adr" name="address" placeholder="542 W. 15th Street">
             <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+            <input type="text" id="city" [(ngModel)]="city"name="city" placeholder="New York">
 
             <div class="row">
               <div class="col-50">
                 <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
+                <input type="text" id="state" [(ngModel)]="state" name="state" placeholder="NY">
               </div>
               <div class="col-50">
                 <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
+                <input type="text" id="zip" [(ngModel)]="zip"name="zip" placeholder="10001">
               </div>
             </div>
           </div>
@@ -37,9 +37,9 @@
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <input type="text" id="cname" [(ngModel)]="cname" name="cardname" placeholder="John More Doe">
             <label for="ccnum">Credit card number</label>
-            <input type="number"  id="ccnum" name="cardnumber" onKeyPress="if(this.value.length==16) return false;" min="0" placeholder="1111222233334444">
+            <input type="number"  id="ccnum" [(ngModel)]="ccnum" name="cardnumber" onKeyPress="if(this.value.length==16) return false;" min="0" placeholder="1111222233334444">
             <label for="expmonth">Exp Month</label>
             <input type="text" id="expmonth" name="expmonth" onKeyPress="if(this.value.length==2) return false;" placeholder="September">
 
@@ -50,7 +50,7 @@
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
-                <input type="number" id="cvv" name="cvv" onKeyPress="if(this.value.length==3) return false;" min="0" placeholder="352">
+                <input type="number" id="cvv" name="cvv" onKeyPress="if(this.value.length == 3) return false;" min="3" placeholder="352">
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@
         
         <input type="submit" value="Pay" (click)="onpay()" class="btn">
 
-        <h1 *ngIf="ismorenumber"> You entered: {{number}}</h1>
+        <h1 *ngIf="ismorenumber"> please fill all the fields mandatorily</h1>
       </form>
     </div>
   </div>
