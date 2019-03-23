@@ -35,6 +35,14 @@ export class DataService {
     return this.http.get('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/customers/email?email=' + email)
   }
 
+  addCustomer(customer) {
+    const body = {
+      fullName: customer.fullname,       
+      email: customer.email
+    };
+return this.http.post('http://laptevphamproject-prod.us-east-1.elasticbeanstalk.com/api/Customers', body); 
+  }
+
   addTicket(ticket){    
 
     const body = {ticketType: ticket.ticketType, 

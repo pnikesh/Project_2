@@ -99,6 +99,15 @@ public customerId: number;
     if (code.code == enteredCode) {
       //console.log("match")
       //
+      let newCustomer = {
+        fullname: this.fullName,
+        email: this.email
+      }
+      this.data.addCustomer(newCustomer).subscribe(
+        data => this.customer = data
+      )
+        
+      
 
      // var id = this.getCustomerId(this.email);
 
