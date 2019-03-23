@@ -133,7 +133,7 @@ confirmedToBuy: boolean = false;
        
         this.addTicketToDB();
        //       debugger
-       // this.router.navigate(['/payment']);
+       // 
 
       }
 
@@ -165,6 +165,8 @@ confirmedToBuy: boolean = false;
       this.data.addTicket(this.ticket).subscribe(
         data => this.ticket = data
       )
+
+      this.router.navigate(['/payment']);
 
   }
   addTicketToDB(){
