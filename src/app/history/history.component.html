@@ -5,12 +5,20 @@
       <h3> To See the History, please enter Your Email </h3>
       <h4 *ngIf="isNotValid" style="color: red"> Fields are Mandatory! </h4>
       <br>
+      <h2 style="color: red" *ngIf="codeIncorrect"> Code is Incorrect. Please try again </h2>
       
       <input type="email" pattern=".+@globex.com" size="30" required name="email" [(ngModel)]="email" placeholder="Enter Your Email"  />    
       <br>
 
-      <button class="confirmBtn button" type="submit" (click)="onConfirm()">Enter Your Email</button>
+      <input *ngIf="codeReceived" type="text" size="30" required name="code" [(ngModel)]="enteredCode" placeholder="Enter Security Code"  />    
+      <br>
+
+      <button *ngIf="!codeReceived" class="confirmBtn button" type="submit" (click)="onEmailEntered()">Enter Your Email</button>
       <br> 
+
+      <button *ngIf="codeReceived" class="confirmBtn button" type="submit" (click)="onCodeEntered()">Confirm Email</button>
+      <br>
+
       <button class="discardBtn button" type="submit" (click)="onDiscard()">Discard</button> 
     </div>
 </div>
