@@ -108,37 +108,13 @@ public customerId: number;
         this.data.getCustomerByEmail(this.email).subscribe(
           data => {
             this.customer = data;
-            this.customerId = this.customer;
+            //this.customerId = this.customer;
             console.log(this.customer);
           }
         )
        
-
-        // Adding ticket to DB 
-
-        
-       // this.ticket.customerId = this.customer.id;
-        this.ticket = {
-          ticketType: "Economy",
-          price: this.flight$.ticketPrice,
-          isRound: false,
-          departureTimeFrom: this.flight$.departureTime,
-          arrivalTimeFrom: this.flight$.arrivalTime,
-          departureTimeTo: "",
-          arrivalTimeTo: "",
-          orderId: 1000,
-          customerId: 0
-
-        };
-
-          this.data.addTicket(this.ticket).subscribe(
-            data => this.ticket = data
-          )
-          
-        /////////////////////////
-
-
-        debugger
+        this.addTicketToDB();
+       //       debugger
         this.router.navigate(['/payment']);
 
       }
@@ -151,17 +127,31 @@ public customerId: number;
 
   }
 
-  getCustomerId(email){
 
-         // Retrieving customer from back end
+  addTicketToDB(){
+          // Adding ticket to DB 
 
-         this.data.getCustomerByEmail(email).subscribe(
-          data => {
-            this.customer = data;
-            this.customerId = this.customer.id;
-            console.log(this.customer.id);
-            return this.customer.id;
-          });
+          var cust = this.customer;
+        
+       // this.ticket.customerId = this.customer.id;
+       this.ticket = {
+        ticketType: "Economy",
+        price: this.flight$.ticketPrice,
+        isRound: false,
+        departureTimeFrom: this.flight$.departureTime,
+        arrivalTimeFrom: this.flight$.arrivalTime,
+        departureTimeTo: "",
+        arrivalTimeTo: "",
+        orderId: 1000,
+        customerId: 0
+
+      };
+
+        this.data.addTicket(this.ticket).subscribe(
+          data => this.ticket = data
+        )
+        
+      /////////////////////////
   }
  
 
