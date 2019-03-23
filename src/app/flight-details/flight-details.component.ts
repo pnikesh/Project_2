@@ -83,7 +83,7 @@ public customerId: number;
 
   onCodeEntered(){
 
-    debugger
+    //debugger
     if (this.enteredCode != undefined ) {
 
     this.checkCode(this.code, this.enteredCode);
