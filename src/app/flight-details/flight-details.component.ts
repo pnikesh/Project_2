@@ -111,11 +111,12 @@ confirmedToBuy: boolean = false;
 
 
       // Adding not NEW CUSTOMER functionality goes here !!!
-      /*
+      if (!code.exists)
+
       this.data.addCustomer(newCustomer).subscribe(
         data => this.customer = data
       )
-       */ 
+       
       
 
      // var id = this.getCustomerId(this.email);
