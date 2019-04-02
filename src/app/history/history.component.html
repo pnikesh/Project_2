@@ -28,6 +28,20 @@
 
         <h1> List of Tickets History for {{ email }}</h1>
 
+        <h3> Search for Date</h3>
+
+        <div class="select">
+
+                <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  />
+           <!-- <select [(ngModel)]="selectedMonth" (change)="onMonthChosen($event)" >
+                <option *ngFor="let m of months" [value]="m.name"> {{m.name}} </option>     
+            </select>
+  
+            <select [(ngModel)]="selectedYear" (change)="onYearChosen($event)" >
+                <option *ngFor="let y of years" [ngValue]="y.name"> {{y.name}} </option>     
+            </select>-->
+        </div>
+
         <ul>         
           <!--<li  *ngFor="let flight of filteredFlights"> -->
               <li  *ngFor="let ticket of tickets">  
@@ -42,8 +56,8 @@
                                   <th> Ticket Type  </th>
                                   <th> Forward Departure Time</th>
                                   <th> Forward Arrival Time </th>
-                                  <th> Return Departure Time </th>
-                                  <th> Return Departure Time </th>
+                                <!--  <th> Return Departure Time </th>
+                                  <th> Return Departure Time </th> -->
                                   <th> Direct </th>
                                   <th> Price </th>
                               </tr>
@@ -53,8 +67,8 @@
                                   <td>{{ ticket.ticketType }}</td> <!-- | enter: departureCityField : i-->
                                   <td> {{ ticket.departureTimeTo | date }}</td>
                                   <td> {{ ticket.arrivalTimeTo | date }} </td>
-                                  <td> {{ ticket.departureTimeFrom | date }}</td>
-                                  <td> {{ ticket.arrivalTimeFrom | date  }}</td>
+                                <!--  <td> {{ ticket.departureTimeFrom | date }}</td>
+                                  <td> {{ ticket.arrivalTimeFrom | date  }}</td> -->
                                   <td>
                                      <div style="color:green" *ngIf="ticket.isRound;else unset"> Yes</div> 
                                      <ng-template #unset>No </ng-template>

@@ -17,6 +17,7 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BookConfirmationComponent } from './book-confirmation/book-confirmation.component';
 import { HistoryComponent } from './history/history.component';
 import { PaymentpageComponent } from './paymentpage/paymentpage.component';
+import { HistoryPipe } from './history.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PaymentpageComponent } from './paymentpage/paymentpage.component';
     UserdetailsComponent,
     BookConfirmationComponent,
     HistoryComponent,
-    PaymentpageComponent
+    PaymentpageComponent,
+    HistoryPipe
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,29 @@ export class HistoryComponent implements OnInit {
 
   constructor(private router: Router, private data: DataService) { }
 
+  months = [
+  {'name': 'Jan'}, 
+  {'name': 'Feb'}, 
+  {'name': 'Mar'}, 
+  {'name': 'Apr'}, 
+  {'name': 'May'}, 
+  {'name': 'Jun'}, 
+  {'name': 'Jul'}, 
+  {'name': 'Aug'}, 
+  {'name': 'Sep'}, 
+  {'name': 'Oct'}, 
+  {'name': 'Nov'}, 
+  {'name': 'Dec'}
+];
+
+years = [
+  {'name': 2018}, 
+  {'name': 2019} 
+];
+
+selectedMonth = "Jan";
+selectedYear = 2019;
+
   email: String;
   showForm: boolean = true;
   showCodeField: boolean = false;
@@ -90,6 +113,14 @@ export class HistoryComponent implements OnInit {
   onDiscard() {
 
     this.router.navigate(['home'])
+  }
+
+  onMonthChosen(event){
+
+  }
+
+  onYearChosen(event){
+    this.selectedYear = event.target.value.split(':')[1];
   }
 
 }
