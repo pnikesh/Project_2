@@ -4,6 +4,8 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute} from "@angular/router";
 import { Ticket } from '../ticket';
+//import { HistoryPipe } from '@angular/common/comm';
+import { DatePipe } from '@angular/common/src/pipes/date_pipe';
 
 @Component({
   selector: 'app-history',

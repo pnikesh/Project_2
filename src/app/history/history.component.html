@@ -44,7 +44,7 @@
 
         <ul>         
           <!--<li  *ngFor="let flight of filteredFlights"> -->
-              <li  *ngFor="let ticket of tickets">  
+              <li  *ngFor="let ticket of tickets | history: {departureTimeTo: departureDateField}">  
               
               <div > 
                   <a> <!--</a> routerLink="/flight_details/{{flight.id}}">-->                
@@ -54,8 +54,8 @@
                           <thead>
                               <tr>
                                   <th> Ticket Type  </th>
-                                  <th> Forward Departure Time</th>
-                                  <th> Forward Arrival Time </th>
+                                  <th> Departure Time</th>
+                                  <th> Arrival Time </th>
                                 <!--  <th> Return Departure Time </th>
                                   <th> Return Departure Time </th> -->
                                   <th> Direct </th>
