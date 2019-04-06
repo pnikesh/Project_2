@@ -9,7 +9,7 @@ Body
 
 body {
   height: 100vh;
-  margin: 0;  
+  margin: 0;
   background: radial-gradient(ellipse farthest-corner at center top, #ECECEC, #999);
   color: #363c44;
   font-size: 14px;
@@ -149,7 +149,7 @@ Boarding Pass
     }
   }
 
-  
+
   /*--------------------
   Infos
   --------------------*/
@@ -168,9 +168,9 @@ Boarding Pass
         clear: both;
       }
     }
-    
+
     .times {
-      
+
       strong {
         transform: scale(0.9);
         transform-origin: left bottom;
@@ -180,7 +180,7 @@ Boarding Pass
     .places {
       background: #ECECEC;
       border-right: 1px solid #99D298;
-      
+
       small {
         color: #97A1AD;
       }
@@ -201,7 +201,7 @@ Boarding Pass
     }
   }
 
-  
+
   /*--------------------
   Strap
   --------------------*/
@@ -221,7 +221,7 @@ Boarding Pass
 
       & div {
         margin-bottom: 15px;
-        
+
         small {
           font-size: 10px;
         }
@@ -245,6 +245,18 @@ Boarding Pass
       height: 80px;
     }
   }
+}
+
+
+@media only screen and (max-width: 400px) {
+
+  .mobile {
+      display: block;
+  }
+  .container {
+      display: none;
+  }
+
 }
 
 //* { display: none; }

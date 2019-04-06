@@ -10,7 +10,7 @@ a {
     padding: 4px;
     color: #0A4970;*/
     margin-right: 30px;
- 
+
 }
 a:hover {
     background: rgb(247, 247, 188);
@@ -69,4 +69,15 @@ ul {
     margin: 10px;
     width: 400px;
     height: 40px;
+}
+
+@media only screen and (max-width: 400px) {
+
+  .mobile {
+      display: block;
+  }
+  .container {
+      display: none;
+  }
+
 }

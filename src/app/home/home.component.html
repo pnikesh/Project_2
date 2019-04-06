@@ -1,16 +1,16 @@
-<div class="container desktop">
+<div class="container">
         <!--<div class="sidebar">-->
             <div style="text-align: center">
             <!--<app-sidebar></app-sidebar>-->
-    
+
                 <div class="heading">
                     <div class="welcomeText">
                         <h1> Please use filters below to specify your choice</h1>
                     </div>
-                    <button class="history button" type="submit" (click)="onHistory()">History</button> 
+                    <button class="history button" type="submit" (click)="onHistory()">History</button>
                 </div>
              <!-- FORWARD SECTION -->
-    
+
                 <div  class="header">
                     <div style="text-align: left; margin-left: 50px; color: green">
                         <h3 *ngIf="isRound"> Forward Flight</h3>
@@ -23,8 +23,8 @@
                         <div class="grid-item">
                             <h3>Arrival City :</h3>
                             <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed($event)" />  <!---->
-                        </div>    
-                    
+                        </div>
+
                 <!-- <br>-->
                     <!--<div class="row">-->
                         <div class="grid-item">
@@ -37,22 +37,22 @@
                         </div>
                 <!-- </div>-->
                     </div>
-    
+
                     <div class="grid-item ">
                         <h3>Round Trip</h3>
                         <input type="checkbox" checked="unChecked" name="isRound"  [(ngModel)]="isRound"  />
                     </div>
-    
+
                     <div class="grid-container-bottom">
                 <!--  <div class="row">-->
                             <div class="grid-item">
                                 <h3>Direct :</h3>
                                 <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
                             </div>
-    
-    
-                            
-    
+
+
+
+
                             <div class="grid-item">
                                 <h3>Maximum price :</h3>
                                 <input type="number" name="priceField"  [(ngModel)]="priceField"/>
@@ -60,13 +60,13 @@
                     <!--</div>-->
                     </div>
                 </div>
-                 <!-- END OF FORWARD SECTION -->    
+                 <!-- END OF FORWARD SECTION -->
                 <!-- RETURN SECTION -->
-    
+
                 <div  class="header" *ngIf="isRound">
                     <div style="text-align: left; margin-left: 50px; color: orangered">
                          <h3> Return Flight</h3>
-                    </div>                
+                    </div>
                     <div class="grid-container-top">
                         <div class="grid-item">
                             <h3>Departure City :</h3>
@@ -75,8 +75,8 @@
                         <div class="grid-item">
                             <h3>Arrival City :</h3>
                             <input type="text" name="arrivalCityField" disabled [(ngModel)]="departureCityField"  (ngModelChange)="arrCityInput($event)" /> <!--(ngModelChange)="changed()"     -->
-                        </div>    
-                    
+                        </div>
+
                 <!-- <br>-->
                     <!--<div class="row">-->
                         <div class="grid-item">
@@ -102,28 +102,28 @@
                     <!--</div>-->
                     </div>
                 </div>
-    
+
             <!-- END OF RETURN SECTION -->
-    
+
             <!--<button class="btn btn-danger" type="submit" (click)="search()">Search</button>-->
         </div>
-    
-       
-    
+
+
+
         <div class="flights_content" *ngIf="searchFieldsContainInfo">
                 <div style="text-align: center">
-                <h1 > Here is the list of all flights available </h1>   
+                <h1 > Here is the list of all flights available </h1>
             </div><br>
-    
-            <ul>         
+
+            <ul>
                 <!--<li  *ngFor="let flight of filteredFlights"> -->
-                    <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField, 
-                           departureTime : departureDateField, arrivalTime: arrivalDateField, direct : isDirect, ticketPrice : priceField}; index as i">  
-                    
+                    <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField,
+                           departureTime : departureDateField, arrivalTime: arrivalDateField, direct : isDirect, ticketPrice : priceField}; index as i">
+
                     <div > <!--*ngIf="flight.departureCity == departureCityField" -->
-                        <a routerLink="/details/{{flight.id}}">                
+                        <a routerLink="/details/{{flight.id}}">
                         <h3 class="flight_name">  Flight number : {{ flight.flightName }}</h3>
-    
+
                             <table>
                                 <thead>
                                     <tr>
@@ -142,7 +142,7 @@
                                         <td> {{ flight.departureTime }} </td>
                                         <td> {{ flight.arrivalTime }}</td>
                                         <td>
-                                           <div style="color:green" *ngIf="flight.direct;else unset"> Yes</div> 
+                                           <div style="color:green" *ngIf="flight.direct;else unset"> Yes</div>
                                            <ng-template #unset>No </ng-template>
                                         </td>
                                         <td> {{ flight.ticketPrice }} </td>
@@ -152,10 +152,9 @@
                         </a>
                      </div>
                 </li>
-                
+
             </ul>
         </div>
     </div>
 
     <div class="mobile"> This is a Mobile view</div>
-    

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { FormsModule }   from '@angular/forms';
 import * as $ from 'jquery';
@@ -37,6 +38,7 @@ import { HistoryPipe } from './history.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AlertModule.forRoot(),
     FormsModule
   ],
   providers: [],
