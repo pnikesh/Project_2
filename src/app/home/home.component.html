@@ -157,4 +157,83 @@
         </div>
     </div>
 
-    <div class="mobile"> This is a Mobile view</div>
+    <div class="mobile">
+
+
+          <div class="mobileText">
+            <h2> Please specify your choice</h2>
+          </div>
+          <button class="history button" type="submit" (click)="onHistory()">History</button>
+          <div>
+            <h5>Departure City :</h5>
+              <input type="text" name="departureCityField" [(ngModel)]="departureCityField"
+                    (ngModelChange)="destCityInput($event)" (ngModelChange)="changed($event)"  /> </div>
+
+            <div class="clearfix"><h5>Arrival City :</h5>
+            <input type="text" name="arrivalCityField"  [(ngModel)]="arrivalCityField"
+                  (ngModelChange)="arrCityInput($event)" (ngModelChange)="changed($event)" /> </div>
+
+            <div class="clearfix"><h5 >Departure Date :</h5>
+            <input type="date" name="departureDate"  [(ngModel)]="departureDateField"  /></div>
+            <div  class="clearfix">
+                <h5>Arrival Date :</h5>
+                <input type="date" name="arrivalDate"  [(ngModel)]="arrivalDateField" />
+            </div>
+            <div class="clearfix" >
+              <h5>Direct :</h5>
+              <input type="checkbox" checked="checked" name="isDirect"  [(ngModel)]="isDirect"  />
+            </div>
+            <div class="clearfix">
+                <h5>Maximum price :</h5>
+                <input type="number" name="priceField"  [(ngModel)]="priceField"/>
+            </div>
+
+            <div class="flights_content" *ngIf="searchFieldsContainInfo">
+                <div style="text-align: center">
+                <h1 > Here is the list of all flights available </h1>
+              </div><br>
+
+            <ul>
+                <!--<li  *ngFor="let flight of filteredFlights"> -->
+                    <li  *ngFor="let flight of flights$ | enter: {departureCity : departureCityField, arrivalCity: arrivalCityField,
+                           departureTime : departureDateField, arrivalTime: arrivalDateField, direct : isDirect, ticketPrice : priceField}; index as i">
+
+                    <div > <!--*ngIf="flight.departureCity == departureCityField" -->
+                        <a routerLink="/details/{{flight.id}}">
+                        <h3 class="flight_name">  Flight number : {{ flight.flightName }}</h3>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th> Ticket Type </th>
+                                        <th> Arrival City</th>
+                                        <th> Departure Time </th>
+                                        <th> Arrival Time </th>
+                                        <th> Direct </th>
+                                        <th> Price </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ flight.departureCity }}</td> <!-- | enter: departureCityField : i-->
+                                        <td> {{ flight.arrivalCity }}</td>
+                                        <td> {{ flight.departureTime | date}} </td>
+                                        <td> {{ flight.arrivalTime | date }}</td>
+                                        <td>
+                                           <div style="color:green" *ngIf="flight.direct;else unset"> Yes</div>
+                                           <ng-template #unset>No </ng-template>
+                                        </td>
+                                        <td> {{ flight.ticketPrice }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                     </div>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+  </div>
