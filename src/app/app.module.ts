@@ -38,7 +38,7 @@ import { HistoryPipe } from './history.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AlertModule.forRoot(),
+    AlertModule,
     FormsModule
   ],
   providers: [],

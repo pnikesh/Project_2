@@ -127,6 +127,16 @@ button.history.button {
 
 @media only screen and (max-width: 400px) {
 
+    .container {
+        display: none;
+
+    }
+
+    .mobile {
+        display: block;
+    }
+        
+    
   .row {
     flex-direction: column-reverse;
   }
